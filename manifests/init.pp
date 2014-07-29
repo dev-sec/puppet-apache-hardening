@@ -13,8 +13,8 @@
 # Creates a valid apache2.conf, a virtual SSL host with correct SSL settings
 #
 
-class apache-hardening
-{
+#class apache-hardening
+#{
 	
 	class { 'apache':
 	  default_mods        => false,
@@ -53,4 +53,4 @@ class apache-hardening
 
 	}
 
-}	# class apache-hardning
+#}	# class apache-hardning

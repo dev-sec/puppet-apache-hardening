@@ -1,29 +1,15 @@
 # README #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+Securing Apache (atleast the basic steps is rather easy). This PUPPET class installs two new sides with
+priority 15, where all needed settings have been made.
 
-### What is this repository for? ###
-
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+The apache2.conf will be overwritten.
 
 ### How do I get set up? ###
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+simply include / run the class
 
-### Contribution guidelines ###
+### Contact ###
 
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+markus-schmall@t-online.de
+flakedev on twitter

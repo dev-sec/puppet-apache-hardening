@@ -19,9 +19,9 @@ class apache_hardening
   class { 'apache':
     default_mods        => false,
     default_confd_files => false,
-    server_signature => Off,
-    server_tokens => Prod,
-    trace_enable => Off,
+    server_signature    => Off,
+    server_tokens       => Prod,
+    trace_enable        => Off,
   }
 
 
@@ -39,17 +39,17 @@ class apache_hardening
   # https enabled hosts
   #
   apache::vhost { 'dtag-ssl':
-    port     => '443',
-    docroot  => '/var/www/',
-    ssl      => true,
+    port                 => '443',
+    docroot              => '/var/www/',
+    ssl                  => true,
 
     #
     #  configure SSL parameters (ssl cyphers taken from great bettercrypto.org side)
     #
 
-    ssl_protocol =>  'All -SSLv2 -SSLv3',
+    ssl_protocol         =>  'All -SSLv2 -SSLv3',
     ssl_honorcipherorder => On,
-    ssl_cipher => 'EDH+CAMELLIA:EDH+aRSA:EECDH+aRSA+AESGCM:EECDH+aRSA+SHA384:EECDH+aRSA+SHA256:EECDH:+CAMELLIA256:+AES256:+CAMELLIA128:+AES128:+SSLv3:!aNULL:!eNULL:!LOW:!3DES:!MD5:!EXP:!PSK:!DSS:!RC4:!SEED:!ECDSA:CAMELLIA256-SHA:AES256-SHA:CAMELLIA128-SHA:AES128-SHA',
+    ssl_cipher           => 'EDH+CAMELLIA:EDH+aRSA:EECDH+aRSA+AESGCM:EECDH+aRSA+SHA384:EECDH+aRSA+SHA256:EECDH:+CAMELLIA256:+AES256:+CAMELLIA128:+AES128:+SSLv3:!aNULL:!eNULL:!LOW:!3DES:!MD5:!EXP:!PSK:!DSS:!RC4:!SEED:!ECDSA:CAMELLIA256-SHA:AES256-SHA:CAMELLIA128-SHA:AES128-SHA',
 
   }
 

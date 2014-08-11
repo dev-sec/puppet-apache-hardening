@@ -2,7 +2,9 @@
 
 ## Description
 
-This module provides hardening configuration for Apache.
+This module provides hardening configuration for Apache2 web server.
+
+Note: This project in work-in-progress and not recommended for production use yet.
 
 ## Requirements
 

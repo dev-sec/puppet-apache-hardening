@@ -5,7 +5,7 @@
 # http://www.apache.org/licenses/LICENSE-2.0
 #
 
-# == Class: apache_hardening::apache
+# == Class: apache_hardening::puppetlabs
 #
 # Overlay provider for puppetlabs/apache
 #

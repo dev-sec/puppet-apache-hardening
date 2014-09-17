@@ -7,8 +7,6 @@ summary 'Configures Apache for security hardening'
 description 'Configures Apache for security hardening'
 project_page 'https://github.com/TelekomLabs/puppet-apache-hardening'
 
-dependency 'hardening/hardening_stdlib', '>=0.0.0 <1.0.0'
 dependency 'puppetlabs/apache'
-
 
 

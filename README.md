@@ -4,8 +4,6 @@
 
 This module provides hardening configuration for Apache2 web server.
 
-Note: This project in work-in-progress and not recommended for production use yet.
-
 ## Requirements
 
 * Puppet
@@ -20,6 +18,15 @@ none
 
 Include the module
 
+```
+class { 'apache':
+  default_mods => false,
+}
+
+class { 'apache_hardening':
+  provider => 'puppetlabs/apache'
+}
+```
 
 ## Contributors + Kudos
 

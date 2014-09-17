@@ -4,6 +4,7 @@ AllCops:
     - metadata.rb
     - '**/Puppetfile'
     - Puppetfile
+    - Gemfile
 
 Documentation:
   Enabled: false

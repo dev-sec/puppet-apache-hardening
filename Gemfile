@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 source 'https://rubygems.org'
 
 if puppetversion = ENV['PUPPET_VERSION']
@@ -10,9 +12,9 @@ group :test do
   gem 'rake'
   gem 'rspec-puppet'
   # avoid NoMethodError: private method `clone' called for #<RuboCop::Cop::CopStore:0x00000104e286c8>
-  gem 'puppetlabs_spec_helper', :git => "https://github.com/ehaselwanter/puppetlabs_spec_helper"
+  gem 'puppetlabs_spec_helper', :git => 'https://github.com/ehaselwanter/puppetlabs_spec_helper'
   gem 'puppet-lint'
-  gem 'rubocop',    '~> 0.23' if RUBY_VERSION > "1.9.2"
+  gem 'rubocop',    '~> 0.23' if RUBY_VERSION > '1.9.2'
 end
 
 group :development do

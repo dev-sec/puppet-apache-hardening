@@ -27,6 +27,7 @@ class apache_hardening::puppetlabs(
 
   # addhardening parameters
 
+  $apache_version = $apache::apache_version
   $conf_dir = $apache::confd_dir
 
   file { "${conf_dir}/90.hardening.conf":

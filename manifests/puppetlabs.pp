@@ -34,5 +34,7 @@ class apache_hardening::puppetlabs(
   file { "${confd_dir}/90.hardening.conf":
     ensure  => file,
     content => template('apache_hardening/hardening.conf.erb'),
+    mode    => '0640',
+  }
   }
 }

@@ -5,6 +5,7 @@ AllCops:
     - '**/Puppetfile'
     - Puppetfile
     - Gemfile
+    - 'test/integration/**/*'
 
 Documentation:
   Enabled: false

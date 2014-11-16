@@ -28,9 +28,10 @@ class apache_hardening::puppetlabs(
   # add hardening parameters
 
   $apache_version = $apache::apache_version
-  $conf_dir = $apache::confd_dir
+  $confd_dir = $apache::confd_dir
+  $conf_dir = $apache::conf_dir
 
-  file { "${conf_dir}/90.hardening.conf":
+  file { "${confd_dir}/90.hardening.conf":
     ensure  => file,
     content => template('apache_hardening/hardening.conf.erb'),
   }

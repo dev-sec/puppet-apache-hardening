@@ -36,5 +36,18 @@ class apache_hardening::puppetlabs(
     content => template('apache_hardening/hardening.conf.erb'),
     mode    => '0640',
   }
+
+  File <| notify  == Service['httpd'] or require == Package['httpd'] |>  {
+    mode  => 0640
+  }
+
+  Concat <| require == Package['httpd'] |>  {
+    mode  => 0640
+  } -> Exec["chmod -R o-rw ${conf_dir}"] ~> Service['httpd']
+
+
+  exec { "chmod -R o-rw ${conf_dir}":
+    path    => ['/bin','/usr/bin', '/usr/sbin'],
+    unless  => "find ${conf_dir} -perm -o+r -type f -o -perm -o+w -type f | wc -l | egrep '^0$'"
   }
 }

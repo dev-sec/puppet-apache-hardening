@@ -47,7 +47,7 @@ class apache_hardening::puppetlabs(
 
 
   exec { "chmod -R o-rw ${conf_dir}":
-    path    => ['/bin','/usr/bin', '/usr/sbin'],
-    unless  => "find ${conf_dir} -perm -o+r -type f -o -perm -o+w -type f | wc -l | egrep '^0$'"
+    path   => ['/bin','/usr/bin', '/usr/sbin'],
+    unless => "find ${conf_dir} -perm -o+r -type f -o -perm -o+w -type f | wc -l | egrep '^0$'"
   }
 }

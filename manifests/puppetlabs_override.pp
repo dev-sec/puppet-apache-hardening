@@ -22,6 +22,7 @@ class apache_hardening::puppetlabs_override (
 ) inherits ::apache {
 
   File["${::apache::conf_dir}/${::apache::params::conf_file}"]{
-    content => template($::apache::params::conf_template)
+    content => template($::apache::params::conf_template),
+    mode   => '0640',
   }
 }

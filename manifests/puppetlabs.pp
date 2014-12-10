@@ -25,13 +25,29 @@ class apache_hardening::puppetlabs(
 
   # additional configuration
 
-  # addhardening parameters
+  # add hardening parameters
 
   $apache_version = $apache::apache_version
-  $conf_dir = $apache::confd_dir
+  $confd_dir = $apache::confd_dir
+  $conf_dir = $apache::conf_dir
 
-  file { "${conf_dir}/90.hardening.conf":
+  file { "${confd_dir}/90.hardening.conf":
     ensure  => file,
     content => template('apache_hardening/hardening.conf.erb'),
+    mode    => '0640',
+  }
+
+  File <| notify  == Service['httpd'] or require == Package['httpd'] |>  {
+    mode  => 0640
+  }
+
+  Concat <| require == Package['httpd'] |>  {
+    mode  => 0640
+  } -> Exec["chmod -R o-rw ${conf_dir}"] ~> Service['httpd']
+
+
+  exec { "chmod -R o-rw ${conf_dir}":
+    path   => ['/bin','/usr/bin', '/usr/sbin'],
+    unless => "find ${conf_dir} -perm -o+r -type f -o -perm -o+w -type f | wc -l | egrep '^0$'"
   }
 }

@@ -30,6 +30,7 @@ class apache_hardening::puppetlabs(
   $apache_version = $apache::apache_version
   $confd_dir = $apache::confd_dir
   $conf_dir = $apache::conf_dir
+  $mod_dir = $apache::mod_dir
 
   file { "${confd_dir}/90.hardening.conf":
     ensure  => file,
@@ -50,4 +51,10 @@ class apache_hardening::puppetlabs(
     path   => ['/bin','/usr/bin', '/usr/sbin'],
     unless => "find ${conf_dir} -perm -o+r -type f -o -perm -o+w -type f | wc -l | egrep '^0$'"
   }
+
+  File['alias.conf'] {
+    content => template('apache_hardening/mod/alias.conf.erb'),
+    mode   => '0640',
+  }
+
 }

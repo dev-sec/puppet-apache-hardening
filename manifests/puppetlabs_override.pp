@@ -17,12 +17,12 @@ class apache_hardening::puppetlabs_override (
 
     $server_signature    = 'Off',
     $server_tokens       = 'Prod',
-    $trace_enable        = 'Off'
+    $trace_enable        = 'Off',
 
 ) inherits ::apache {
 
   File["${::apache::conf_dir}/${::apache::params::conf_file}"]{
-    content => template($::apache::params::conf_template),
+    content => template('apache_hardening/httpd.conf.erb'),
     mode   => '0640',
   }
 }

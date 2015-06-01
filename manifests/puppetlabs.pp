@@ -52,7 +52,7 @@ class apache_hardening::puppetlabs(
     unless => "find ${conf_dir} -perm -o+r -type f -o -perm -o+w -type f | wc -l | egrep '^0$'"
   }
 
-  File['alias.conf'] {
+  File <| title == 'alias.conf' |> {
     content => template('apache_hardening/mod/alias.conf.erb'),
     mode   => '0640',
   }

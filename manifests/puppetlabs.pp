@@ -38,7 +38,7 @@ class apache_hardening::puppetlabs(
     mode    => '0640',
   }
 
-  File <| notify  == Service['httpd'] or require == Package['httpd'] |>  {
+  File <| notify  == Service['httpd'] or notify == Class['::apache::service'] or require == Package['httpd'] |>  {
     mode  => 0640
   }
 

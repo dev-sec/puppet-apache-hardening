@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source ENV['GEM_SOURCE'] || 'https://rubygems.org'
 
 puppetversion = ENV['PUPPET_VERSION']
 if puppetversion
@@ -9,18 +9,22 @@ end
 
 group :test do
   gem 'rake'
-  # bugfix for ruby 1.8, puppet+rspec interplay
-  # https://github.com/rspec/rspec-core/issues/1864
-  gem 'rspec', '~> 3.1.0' if RUBY_VERSION.start_with? '1.8'
-  gem 'rspec-puppet'
-  # avoid NoMethodError: private method `clone' called for #<RuboCop::Cop::CopStore:0x00000104e286c8>
-  gem 'puppetlabs_spec_helper', :git => 'https://github.com/ehaselwanter/puppetlabs_spec_helper'
+  gem 'rspec', '< 3.2.0'
+  gem 'rspec-puppet', :git => 'https://github.com/rodjek/rspec-puppet.git'
+  gem 'puppetlabs_spec_helper'
+  gem 'metadata-json-lint'
+  gem 'rspec-puppet-facts'
+  gem 'rubocop', '0.33.0'
   gem 'puppet-lint'
-  gem 'rubocop', '~> 0.31' if RUBY_VERSION > '1.9.2'
 end
 
 group :development do
+  gem 'travis'
+  gem 'travis-lint'
+  gem 'puppet-blacksmith'
   gem 'guard-rake'
+  # Downgrade listen gem for guard to < 3.1.0, newer version only supports Ruby 2.2
+  gem 'listen', '< 3.1.0'
 end
 
 group :integration do
@@ -33,4 +37,10 @@ end
 
 group :openstack do
   gem 'kitchen-openstack'
+end
+
+group :system_tests do
+  gem 'beaker'
+  gem 'beaker-rspec'
+  gem 'beaker-puppet_install_helper'
 end

@@ -21,7 +21,7 @@ class apache_hardening::puppetlabs(
 ) {
 
   # make sure our options are written to the config file
-  class{'apache_hardening::puppetlabs_override': }
+  class{'::apache_hardening::puppetlabs_override': }
 
   # additional configuration
 
@@ -49,7 +49,7 @@ class apache_hardening::puppetlabs(
 
   exec { "chmod -R o-rw ${conf_dir}":
     path   => ['/bin','/usr/bin', '/usr/sbin'],
-    unless => "find ${conf_dir} -perm -o+r -type f -o -perm -o+w -type f | wc -l | egrep '^0$'"
+    unless => "find ${conf_dir} -perm -o+r -type f -o -perm -o+w -type f | wc -l | egrep '^0$'",
   }
 
   File <| title == 'alias.conf' |> {

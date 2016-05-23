@@ -39,11 +39,11 @@ class apache_hardening::puppetlabs(
   }
 
   File <| notify  == Service['httpd'] or notify == Class['::apache::service'] or require == Package['httpd'] |>  {
-    mode  => 0640
+    mode  => '0640'
   }
 
   Concat <| require == Package['httpd'] |>  {
-    mode  => 0640
+    mode  => '0640'
   } -> Exec["chmod -R o-rw ${conf_dir}"] ~> Service['httpd']
 
 

@@ -21,7 +21,7 @@ class apache_hardening::puppetlabs(
 ) {
 
   # make sure our options are written to the config file
-  class{'apache_hardening::puppetlabs_override': }
+  class{'::apache_hardening::puppetlabs_override': }
 
   # additional configuration
 
@@ -39,17 +39,17 @@ class apache_hardening::puppetlabs(
   }
 
   File <| notify  == Service['httpd'] or notify == Class['::apache::service'] or require == Package['httpd'] |>  {
-    mode  => 0640
+    mode  => '0640'
   }
 
   Concat <| require == Package['httpd'] |>  {
-    mode  => 0640
+    mode  => '0640'
   } -> Exec["chmod -R o-rw ${conf_dir}"] ~> Service['httpd']
 
 
   exec { "chmod -R o-rw ${conf_dir}":
     path   => ['/bin','/usr/bin', '/usr/sbin'],
-    unless => "find ${conf_dir} -perm -o+r -type f -o -perm -o+w -type f | wc -l | egrep '^0$'"
+    unless => "find ${conf_dir} -perm -o+r -type f -o -perm -o+w -type f | wc -l | egrep '^0$'",
   }
 
   File <| title == 'alias.conf' |> {

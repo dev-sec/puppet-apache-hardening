@@ -1,11 +1,18 @@
+sudo: false
+language: ruby
+bundler_args: --without development integration openstack system_tests
+before_install: rm Gemfile.lock || true
 rvm:
-  - 1.8.7
   - 1.9.3
   - 2.0.0
   - 2.1.0
-language: ruby
-bundler_args: --without development integration openstack
+script: bundle exec rake test
 env:
+  - PUPPET_VERSION="~> 4.5.0"
+  - PUPPET_VERSION="~> 4.4.0"
+  - PUPPET_VERSION="~> 4.3.0"
+  - PUPPET_VERSION="~> 4.2.0"
+  - PUPPET_VERSION="~> 4.1.0"
   - PUPPET_VERSION="~> 4.0.0"
   - PUPPET_VERSION="~> 3.7.5"
   - PUPPET_VERSION="~> 3.6.2"
@@ -19,9 +26,9 @@ matrix:
       env: PUPPET_VERSION="~> 2.7.0"
     - rvm: 2.1.0
       env: PUPPET_VERSION="~> 2.7.0"
-    - rvm: 1.8.7
-      env: PUPPET_VERSION="~> 4.0.0"
-    - rvm: 1.9.3
-      env: PUPPET_VERSION="~> 4.0.0"
-    - rvm: 2.0.0
-      env: PUPPET_VERSION="~> 4.0.0"
+    - rvm: 2.1.0
+      env: PUPPET_VERSION="~> 3.2.0"
+    - rvm: 2.1.0
+      env: PUPPET_VERSION="~> 3.3.0"
+    - rvm: 2.1.0
+      env: PUPPET_VERSION="~> 3.4.0"

@@ -20,7 +20,7 @@ class apache_hardening(
 ) {
   case $provider {
     'puppetlabs/apache': {
-      class{'apache_hardening::puppetlabs': }
+      class{'::apache_hardening::puppetlabs': }
     }
     'none': {
       fail('You haven\'t configured a Apache provider for hardening.')

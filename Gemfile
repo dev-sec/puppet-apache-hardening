@@ -9,12 +9,12 @@ end
 
 group :test do
   gem 'rake'
-  gem 'rspec', '< 3.2.0'
+  gem 'rspec', '< 3.12.1'
   gem 'rspec-puppet', :git => 'https://github.com/rodjek/rspec-puppet.git'
   gem 'puppetlabs_spec_helper'
   gem 'metadata-json-lint'
   gem 'rspec-puppet-facts'
-  gem 'rubocop', '0.33.0'
+  gem 'rubocop', '0.49.0'
   gem 'puppet-lint'
 end
 
@@ -23,8 +23,7 @@ group :development do
   gem 'travis-lint'
   gem 'puppet-blacksmith'
   gem 'guard-rake'
-  # Downgrade listen gem for guard to < 3.1.0, newer version only supports Ruby 2.2
-  gem 'listen', '< 3.1.0'
+  gem 'listen', '< 3.8.1'
 end
 
 group :integration do

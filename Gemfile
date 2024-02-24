@@ -23,7 +23,7 @@ group :development do
   gem 'travis-lint'
   gem 'puppet-blacksmith'
   gem 'guard-rake'
-  gem 'listen', '< 3.8.1'
+  gem 'listen', '< 3.9.1'
 end
 
 group :integration do

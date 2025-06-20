@@ -14,7 +14,7 @@ group :test do
   gem 'puppetlabs_spec_helper'
   gem 'metadata-json-lint'
   gem 'rspec-puppet-facts'
-  gem 'rubocop', '1.76.2'
+  gem 'rubocop', '1.77.0'
   gem 'puppet-lint'
 end
 

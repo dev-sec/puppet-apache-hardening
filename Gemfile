@@ -9,7 +9,7 @@ end
 
 group :test do
   gem 'rake'
-  gem 'rspec', '< 3.13.2'
+  gem 'rspec', '< 3.13.3'
   gem 'rspec-puppet', :git => 'https://github.com/rodjek/rspec-puppet.git'
   gem 'puppetlabs_spec_helper'
   gem 'metadata-json-lint'

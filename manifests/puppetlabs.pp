@@ -31,6 +31,8 @@ class apache_hardening::puppetlabs(
   $confd_dir = $apache::confd_dir
   $conf_dir = $apache::conf_dir
   $mod_dir = $apache::mod_dir
+  $icons_path = $apache::mod::alias::icons_path
+  $icons_options = '-Indexes +MultiViews -FollowSymLinks' # overwrites $apache::mod::alias::icons_options
 
   file { "${confd_dir}/90.hardening.conf":
     ensure  => file,
@@ -53,7 +55,7 @@ class apache_hardening::puppetlabs(
   }
 
   File <| title == 'alias.conf' |> {
-    content => template('apache_hardening/mod/alias.conf.erb'),
+    content => template('apache/mod/alias.conf.erb'),
     mode   => '0640',
   }
 
